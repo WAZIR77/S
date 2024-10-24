@@ -1,0 +1,317 @@
+Exp 13:
+A digital signature is like a virtual fingerprint or a stamp used to prove that a digital message or document is real and hasn't been changed.
+
+How digital signatures work
+Digital signatures are based on public key cryptography, also known as asymmetric cryptography. Using a public key algorithm, such as RSA, one can generate two keys that are mathematically linked: one private and one public.
+The individual who is creating the digital signature uses their own private key to encrypt signature-related data; the only way to decrypt that data is with the signer's public key. This is how digital signatures are authenticated.
+
+How to create a digital signature
+To create a digital signature, signing software such as an email program -- creates a one-way
+hash of the electronic data to be signed. The private key is then used to encrypt the hash. The
+encrypted hash along with other information, such as the hashing algorithm is the digital
+signature.
+The reason for encrypting the hash instead of the entire message or document is that a hash
+function can convert an arbitrary input into a fixed length value, which is usually much
+shorter.
+The value of a hash is unique to the hashed data. Any change in the data, even a change in a
+single character, will result in a different value. This attribute enables others to validate the
+integrity of the data by using the signer's public key to decrypt the hash.
+If the decrypted hash matches a second computed hash of the same data, it proves that the
+data hasn't changed since it was signed. 
+
+RSA is a popular encryption algorithm used to secure data, especially in digital communications. It stands for Rivest-Shamir-Adleman, the names of its inventors. RSA is used to encrypt and decrypt messages, ensuring that sensitive information can be safely transmitted over the internet.
+
+open cryptool :
+go to encrypt/decryption ---> asymmetric ---> RSA demonstration ---> enter 211 233 prime number ---> input text --> encrypt
+copy the decrypted code --> select number --> paste the code in input text--> decrypt.
+
+go to iit virtual lab cryptography--> list of expiremnt--> digital signature-->enter plain text --> copy the hash output and paste it in input rsa--> generate key by clicking on 1024 bit --> and then click on apply --> digital signature is provided.
+
+
+go to cryptool --> digital signature--> signature demonstration --> open document ---> select hash --> MD5--> generate key --> generate prime number keys--> provide certificate --> enter deatils--> compute hash value -->encrypt hash value-->genarte signature --> store document--> verify the signature --> extract the signature.
+
+Exp 12:
+What is Cryptool?
+• A freeware program with graphical user interface (GUI).
+• A tool for applying and analyzing cryptographic algorithms.
+Symmetric and asyymetric
+
+casesar cipher 
+vignere cipher --The plaintext character (V) is replaced by the character in the corresponding row and in the column
+of the first keyword character (c). The next plaintext character (I) is replaced by the character in
+the corresponding row and in the column of the next keyword character (h), and so on. If all
+characters of the keyword have been used, then the next keyword character is the first key
+character.
+playfair cipher
+DES (ECB): The Data Encryption Standard (DES) is a symmetric-key block cipher published by the National
+Institute of Standards and Technology (NIST).
+DES is an implementation of a Feistel Cipher. It uses 16 round Feistel structure. The block size is
+64-bit. Though, key length is 64-bit, DES has an effective key length of 56 bits, since 8 of the 64
+bits of the key are not used by the encryption algorithm (function as check bits only).
+
+Asymmetric --> RSA
+
+
+Exp 10 : 
+go to cryptool --> inval procedure-->hash --> demonstration of hash ---> use every algo MD5 SHA-1 other too--> note down the diff in bits.
+Hashes are the products of cryptographic algorithms designed to produce a string of characters.
+Often these strings have a fixed length, regardless of the size of the input data.
+MD5, SHA-1, and SHA-256 are all different hash functions.
+
+MD5 and SHA-1 are tools that take any data (like a file or a password) and turn it into a short, fixed-length code called a hash. Think of them like a digital fingerprint for the data. Even if the input is very big, the hash they generate is always the same size.
+
+MD5 produces a smaller fingerprint (128-bit), and SHA-1 produces a slightly larger one (160-bit).
+
+difference:
+1. Hash Length:
+MD5: Produces a 128-bit hash (32 hexadecimal characters).
+SHA-1: Produces a 160-bit hash (40 hexadecimal characters)
+2. Security:
+MD5: less secure
+SHA-1 : high secure than MD5
+3. Performance:
+MD5: Generally faster than SHA-1 because it generates a shorter hash.
+SHA-1: Slightly slower than MD5 due to producing a longer hash.
+4. Speed:
+MD5: faster 
+SHa-1: slower
+5. attacks required to find out message 
+2^128 bit operation
+2^160 bit operation
+
+Exp 11:
+John the Ripper (JtR) is a popular password-cracking tool
+John can work in the following modes:
+1. Single crack
+In this mode, john will try to crack the password using the login/GECOS
+information as passwords.
+2. Wordlist
+John will simply use a file with a list of words that will be checked against the
+passwords. See RULES for the format of wordlist files.
+3. Incremental
+This is the most powerful mode. John will try any character combination to
+resolve the password.
+
+The files associated with this tool are as below:
+/etc/john/john.conf
+is where you configure how john will behave.
+/etc/john/john-mail.msg
+has the message sent to users when their passwords are successfully cracked.
+/etc/john/john-mail.conf
+is used to configure how john will send messages to users that had their
+passwords cracked.
+
+sudo apt-get install john
+john -test
+sudo adduser your name
+sudo cat /etc/shadow
+copy the key of your name
+sudo nano yourname.txt
+paste it here
+cat yourname.txt
+john yourname.txt
+john -show yourname.txt
+
+
+Exp8 :
+SQL Injection is a code injection technique where an attacker executes malicious SQL queries that
+control a web application’s database.
+SQL injection is a hacking technique where an attacker can insert SQL commands through a URL to
+be executed by the database. This bug or vulnerability occurs because all programmers or webmasters
+do web programming such as the filtering of variables in the web.
+SQLMap is an open source penetration test tool that automates the process of detecting andexploiting weaknesses in SQL injection and taking over the server database. So sqlmap is a tool that can automatically detect and exploit SQL injection bugs. by doing a SQL injection attack an attacker can take over and manipulate a database on a server.
+
+sudo apt-get install sqlmap
+sqlmap -h
+sqlmap -u http://testphp.vulnweb.com/artists.php?artist=1
+sqlmap -u http://testphp.vulnweb.com/listproducts.php?cat=1 --dbs
+sqlmap -u http://testphp.vulnweb.com/listproducts.php?cat=1 -D acuart --tables
+sqlmap -u http://testphp.vulnweb.com/listproducts.php?cat=1 -D acuart -T users --columns
+sqlmap -u http://testphp.vulnweb.com/listproducts.php?cat=1 -D acuart -T users -C uname --dump
+sqlmap -u http://testphp.vulnweb.com/listproducts.php?cat=1 -D acuart -T users -C pass --dump
+
+now go to the site: http://testphp.vulnweb.com/artists.php?artist=1
+enter the username and password
+
+EXP6: Snort
+Snort is a popular choice for running a network intrusion detection systems or NIDS. It monitors the package data sent and received through a specific network interface.
+Snort can run in three modes:
+Packet Sniffing
+This mode have no special use, all you can do is just look at the traffic
+coming at the interface.
+Network Intrusion detection
+This mode is the actual use of snort, in this mode snort monitor the traffic and block any unwanted traffic using the rules.
+Logger mode:
+log the data
+
+snort --version
+service snort status
+sudo su -
+rsync -Pav apsit@Ip address:/etc/snort /etc/
+cd /etc
+cd snort
+ls
+cat snort.conf
+gedit /etc/snort/rules/myrules.rules
+save an exit
+cd /var/log/snort
+service snort restart
+cd /var/log/snort
+tail -f /var/log/snort/alerts
+ping from other machine with your IP address.. 192.168.104.11
+cd /var/log/snort
+ls -l
+cd
+snort -d -l /var/log/snort/ -c /etc/snort/snort.conf -i
+ping from other machine ssh root with your id address 192.168.104.11
+
+snort -l /var/log/snort/ -b -h Ip address
+ls -l /var/log/snort/ | grep snort.log:log address(numer)
+file /var/log/snort/snort.log
+file snort.log:number from log
+cd /var/log/snort
+ls -l
+
+Exp4
+Nmap (Network Mapper) is a security scanner originally written by Gordon Lyon
+(also known by his pseudonym Fyodor Vaskovich) used to discover hosts and services on a computer network, thus creating a "map" of the network. To accomplish its goal, Nmap sends specially crafted packets to the target host and then analyzes the responses.
+Nmap features include:
+• Host Discovery – Identifying hosts on a network. For example, listing the hosts which respond to pings or have a particular port open.
+• Port Scanning – Enumerating the open ports on one or more target hosts.
+• Version Detection – Interrogating listening network services listening on remote devices to
+determine the application name and version number.
+• OS Detection – Remotely determining the operating system and some hardware
+characteristics of network devices.
+
+Nmap -- full scan , half scan, ping scan, os scan, fin scan , idle scan,
+service httpd status
+service httpd restart 
+service httpd start
+tcp scan -- nmap -sT 127.0.0.1 -p 80
+another teminal tcpdump -i lo -n port 80
+
+half scan - nmap -sS 127.0.0.1 -p 80
+another teminal tcpdump -i lo -n port 80
+
+fin scan -nmap -sF 127.0.0.1 -p 80
+another teminal tcpdump -i lo -n port 80
+
+version detection -nmap -sV 127.0.0.1 -p 80
+another teminal tcpdump -i lo -n port 80
+
+Null -nmap -sN 127.0.0.1 -p 80
+another teminal tcpdump -i lo -n port 80
+
+ip protocol -nmap -O 127.0.0.1 
+
+ping -nmap -sP ip address of another machine
+
+idle scan nmap -sI 127.0.0.1 -p 80
+ another teminal tcpdump -i lo -n port 80
+
+Exp 2 squid
+Proxy servers operate as an intermediary between a local network and services available on
+a larger one such as the Internet. Requests from local clients for web services can be handled by
+the proxy server, speeding transactions as well as controlling access. Proxy servers maintain
+current copies of commonly accessed web pages, speeding web access times by eliminating the
+need to access the original site constantly. They also perform security functions, protecting
+servers from unauthorized access. Squid is a free, open source, proxy-caching server for web
+clients, designed to speed Internet access and provide security controls for web servers.
+Squid stores files from previous requests to speed up future transfers. For example, suppose
+client1downloads CentOS-7.0-1406-x86_64-DVD.iso from Internet. When client2 requests access to the same file, squid can transfer the file from its cache instead of downloading it again from the
+Internet. This feature can be used to speed up data transfers in a network of computers that require
+frequent updates of some kind.
+
+ACLs (Access Control Lists) allow us to restrict the access to websites, and / or monitor the
+access on a per user basis. Access can be restricted based on day of week or time of day, or domain.
+
+
+rpm -q squid - to check squid is install or not
+rsync -pav 192.168.18.232/etc/squid/etc/ (id address of system) ifconfig
+service squid restart
+service squid status
+netstat -atnl | grep :3128 to check port status of squid
+cd /etc/squid
+ls
+gedit /etc/squid/squid.conf
+modify the action for forbidden workinghour as per your choice and specify the action for user authentication(change username here)
+httppasswd /etc/squid/passwd teitc to establish user authentication
+tail -f /var/log/squid/access.log
+go to browser and type yournameapsit.com
+
+Exp1:
+Spoofing
+IP address spoofing is one of the most frequently used spoofing attack methods. In an IP address spoofing attack, an attacker sends IP packets from a false or “spoofed”
+source address in order to disguise itself. Denial-of- service attacks often use IP spoofing to overload networks and devices with packets that appear to be from legitimate source IP addresses.
+
+ARP is short form of Address Resolution Protocol.This is a protocol that is used to resolve IP
+addresses to MAC (Media Access Control) addresses for transmitting data. In an ARP spoofing
+attack, a malicious party sends spoofed ARP messages across a local area network in order to
+link the attacker’s MAC address with the IP address of a legitimate member of the network. This
+type of spoofing attack results in data that is intended for the host’s IP address getting sent to the
+attacker instead. Malicious parties commonly use ARP spoofing to steal information, modify
+data in-transit or stop traffic on a LAN
+
+Ip spoofing
+ls
+cd netkit
+./check_configuration.sh
+copy paste the error and re run the cmd 3 times
+repeat step 4
+vstart pc1 --eth0 =A
+vstart pc2 --eth0 =A
+vstart pc3 --eth0 =A
+pc1 : ifconfig eth0 192.168.1.11/24
+pc2 : ifconfig eth0 192.168.1.12/24
+pc3 : ifconfig eth0 192.168.1.13/24
+pc1: iptables -t nat -A POSTROUTING -p icmp SNAT -to source 192.168.1.12
+pc2: tcpdump -i any icmp
+pc3: tcpdump -i any icmp
+pc1: ping 192.168.1.13 
+pc1: tcpdump -i any icmp
+
+MAC spoofing
+sudo su 
+pc1: systemctl enable arpwatch
+pc1: systemctl start arpwatch
+pc1: systemctl status arpwatch
+pc1: arpwatch status arpwatch
+pc1: arpwatch -i enp4sO
+tail -f /var/log/syslog
+iptables -f
+pc2:iptables -F
+ufw disable
+pc2:ufw disable
+pc1: ping 192.168.1.12
+pc2: ping 192.168.1.11
+arp -e
+arp -e
+pc2 ifconfig 
+pc2 ifconfig enp4sO hw ether <client MAC>
+
+Exp 9:
+IPsec, also known as the Internet Protocol Security or IP Security protocol, defines
+the architecture for security services for IP network traffic. The IP Security (IPsec)
+architecture comprises a suite of protocols developed to ensure the integrity,
+confidentiality and authentication of data communications over an IP network. Also
+included in IPsec are protocols that define the cryptographic algorithms usedto
+encrypt, decrypt and authenticate packets, as well as the protocols needed for secure
+key exchange and key management.
+two modes:
+tunnel  header + data is encrypted
+transport only header is encrypted
+
+rpm -q ipsec-tools.
+system-config-network
+ipsec tab --?edit-->static ip address set it-->deactive and active interface-->file and save ..
+service network restart
+system-config-network
+new->nickname->host-tohost->automatic--> rmeote id addres(neighbours)-->authentication key 123456
+apply file and save
+service network restart
+
+tcpdump -i eth2 -nXXX host neighbours Ip
+
+
+
+
